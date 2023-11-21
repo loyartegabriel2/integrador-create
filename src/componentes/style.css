@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+/* Estilosssss */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://i.imgur.com/mXFUybT.jpg');
+    background-size: cover; 
+    background-position: center; 
+  }
+
+.wrapper { 
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 100vh; 
+}
+h1{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+}
+h2{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;  
+}
+.btn{
+    font-family: 'Poppins', sans-serif;
+}
+.custom-css{
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    box-shadow: 5px 5px 10px 1px #49494983;
+}
+.custom-input{
+    font-family: 'Poppins', sans-serif;
+    box-shadow: inset 5px 5px 5px rgb(192, 192, 192), 0px 0px 4px rgb(224, 3, 253);
+}
+.list-group{
+    font-family: 'Poppins', sans-serif;
+    box-shadow: inset 5px 5px 5px rgb(192, 192, 192), 0px 0px 4px rgb(224, 3, 253); 
+}
