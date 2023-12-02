@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './componentes/style.css';
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const initialTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const [tasks, setTasks] = useState(initialTasks);
 
   // Función para agregar una tarea
   const addTask = taskName => {
@@ -32,33 +33,37 @@ const App = () => {
     setTasks(filteredTasks);
   };
 
-  // Efecto para almacenar tarea en localStorage
+  // Almacenar tarea en localStorage
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
-
-  // Efecto para cargar tareas almacenadas en localStorage al cargar la página
+  
+  // Cargar tareas en localStorage 
   useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    if (storedTasks) {
-      setTasks(storedTasks);
+    try {
+      const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      if (storedTasks) {
+        setTasks(storedTasks);
+      }
+    } catch (error) {
+      // Manejar errores al acceder al localStorage
+      console.error('Error accessing localStorage:', error);
     }
   }, []);
 
   return (
-      <div className="wrapper">
+    <div className="wrapper">
       <Container className="text-center mt-4 p-4 border custom-css">
-      <h1>App de Tareas</h1>
-      <TaskForm addTask={addTask} />
-      <TaskList
-        tasks={tasks}
-        handleCompleteTask={handleCompleteTask}
-        handleDeleteTask={handleDeleteTask}
-      />
+        <h1>App de Tareas</h1>
+        <TaskForm addTask={addTask} />
+        <TaskList
+          tasks={tasks}
+          handleCompleteTask={handleCompleteTask}
+          handleDeleteTask={handleDeleteTask}
+        />
       </Container>
     </div>
   );
 };
-
 
 export default App;
